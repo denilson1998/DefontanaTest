@@ -35,8 +35,6 @@ namespace ApplicationLayer
 
             string days = Console.ReadLine();
 
-            Console.WriteLine($"{days}");
-
             DataTable saleDetailTable = _saleDetailRepository.GetSaleDetailsByDays(Convert.ToInt32(days));
 
             List<SaleDetailModel> saleDetails = new List<SaleDetailModel>();
@@ -167,6 +165,10 @@ namespace ApplicationLayer
                 Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
                 Console.WriteLine($"ID_Local: {item.ID_Local} | NombreLocal: {item.NombreLocal} | ID_Producto: {item.Productos.ID_Producto} | NombreProducto: {item.Productos.NombreProducto}");
             }
+
+            Console.Write("Presione Enter para Finalizar el Programa");
+
+            Console.ReadLine();
         }
     }
 }
