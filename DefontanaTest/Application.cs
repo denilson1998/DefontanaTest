@@ -59,7 +59,7 @@ namespace ApplicationLayer
                 objSaleDetail.TotalLinea = (int)saleDetail["TotalLinea"];
                 
                 saleDetails.Add(objSaleDetail);
-                Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+                Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine($"ID_Venta: {objSaleDetail.ID_Venta}" + " | " +
                     $"ID_VentaDetalle: {objSaleDetail.ID_VentaDetalle}" + " | " +
                     $"Total: {objSaleDetail.Total}" + " | " +
@@ -75,11 +75,18 @@ namespace ApplicationLayer
                     $"Costo_Unitario: {objSaleDetail.Costo_Unitario}" + " | " +
                     $"TotalLinea: {objSaleDetail.TotalLinea}");
             }
-            Console.WriteLine("2://///////////////////////////////////////////////////////////////////////////////////////////////////");
+
+            Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("2:El total de ventas de los últimos 30 días (monto total y cantidad total de ventas).///////////////////////");
             
             Console.WriteLine($"Total Ventas(30 días): { saleDetails.Sum(s => s.TotalLinea)}");
             
-            Console.WriteLine($"Cantidad Vendida(30 días): {saleDetails.Sum(s => s.Cantidad)}");
+            Console.WriteLine($"Cantidad Total Ventas(30 días): {saleDetails.Count()}");
 
             var day = 0;
             var month = 0;
@@ -93,13 +100,13 @@ namespace ApplicationLayer
             hour = result[0].Fecha.ToString("HH:mm:ss");
             amount = result[0].Total;
 
-            Console.WriteLine("3://///////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("3:El día y hora en que se realizó la venta con el monto más alto (y cuál es aquel monto).////////////////////////////////////////////");
             
             Console.WriteLine($"Dia y Hora Venta con Monto Mas Alto");
 
             Console.WriteLine($"Total: {amount} | Dia: {day} | Mes: {month} | Hora: {hour}");
 
-            Console.WriteLine("4://///////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("4:Indicar cuál es el producto con mayor monto total de ventas.////////////////////////////////////////////////////////////////////////");
 
             var result4 = saleDetails
                 .GroupBy(p => p.ID_Producto)
@@ -113,7 +120,7 @@ namespace ApplicationLayer
 
             Console.WriteLine($"ID_Producto: {result4[0].ID_Producto} | NombreProducto: {result4[0].NombreProducto} | MontoTotalVentaProducto: {result4[0].MontoTotalVentaProducto}");
 
-            Console.WriteLine("5://///////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("5:Indicar el local con mayor monto de ventas.//////////////////////////////////////////////////////////////////////");
 
             var result5 = saleDetails
                 .GroupBy(p => p.ID_Local)
@@ -127,7 +134,7 @@ namespace ApplicationLayer
 
             Console.WriteLine($"ID_Local: {result5[0].ID_Local} | NombreLocal: {result5[0].NombreLocal} | MontoTotalVentaLocal: {result5[0].MontoTotalVentaLocal}");
 
-            Console.WriteLine("6://///////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("6:¿Cuál es la marca con mayor margen de ganancias?///////////////////////////////////////////////////////////////////////////////////");
 
             var result6 = saleDetails
                 .GroupBy(p => p.ID_Marca)
@@ -141,7 +148,7 @@ namespace ApplicationLayer
 
             Console.WriteLine($"ID_Marca: {result6[0].ID_Marca} | NombreMarca: {result6[0].NombreMarca} | Ganancia: {result6[0].Ganancia}");
 
-            Console.WriteLine("7://///////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("7:¿Cómo obtendrías cuál es el producto que más se vende en cada local?//////////////////////////////////////////////////////////////////////");
 
             var result7 = saleDetails
                         .GroupBy(p => p.ID_Local)
@@ -162,7 +169,7 @@ namespace ApplicationLayer
 
             foreach (var item in result7)
             {
-                Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////");
+                Console.WriteLine("---------------------------------");
                 Console.WriteLine($"ID_Local: {item.ID_Local} | NombreLocal: {item.NombreLocal} | ID_Producto: {item.Productos.ID_Producto} | NombreProducto: {item.Productos.NombreProducto}");
             }
 
